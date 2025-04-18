@@ -32,7 +32,11 @@ const PhoneContainer = ({ phones }) => {
       </div>
       {/* 1.7 added onClick and toggle with  showAll by setShowAll*/}
       <button
-        onClick={() => setShowAll(!showAll)}
+        onClick={() => {
+          setShowAll(!showAll);
+          //   1.8 it will help to scroll
+          if (showAll) window.scrollTo(0, 200);
+        }}
         className="relative inline-block text-lg group hover:cursor-pointer mt-3"
       >
         <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
