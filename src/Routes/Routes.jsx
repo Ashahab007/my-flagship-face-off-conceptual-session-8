@@ -16,13 +16,21 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: "/",
+        // show suspense using hydrateFallbackElement
+        hydrateFallbackElement: <p>Loading, Please Wait . . .</p>,
         Component: Home,
-        loader: () => fetch("phones.json"),
+        loader: () => fetch("../phones.json"), //here ../ is used because it's not api. it's a fake data. in case of api avoid "../".
       },
       { path: "about", Component: About },
       { path: "cart", Component: Cart },
       { path: "favorites", Component: Favorites },
-      { path: "phone-details", Component: PhoneDeatails },
+      {
+        // 3.0 make the path dynamic
+        path: "phone-details/:id",
+        // 3.1 getting phone details
+        loader: () => fetch("../phones.json"),
+        Component: PhoneDeatails,
+      },
     ],
   },
 ]);
