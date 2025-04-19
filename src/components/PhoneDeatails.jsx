@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import Button from "../ui/Button";
 import { MdOutlineBookmark, MdShoppingCartCheckout } from "react-icons/md";
+import { addFavorites } from "../../public/localStorage";
 
 const PhoneDeatails = () => {
   // 3.2 useLoaderData to get all the data
@@ -13,7 +14,7 @@ const PhoneDeatails = () => {
   const { id } = useParams();
   console.log(id);
 
-  // 3.5 not use find method to get the specific product
+  // 3.5 use find method to get the specific product
   const singlePhone = data.find((phone) => phone.id === parseInt(id)); //as the useParams id was string so converted to number
   console.log(singlePhone);
 
@@ -28,6 +29,15 @@ const PhoneDeatails = () => {
     storage,
   } = singlePhone;
 
+  // 5.1 my requirement is to save the data in localStorage. So created localStorage in public folder by clicking the bookmark button.
+
+  // 5.3 create a handleFavorite to pass the singlePhone that we found  previously to localStorage exported function addFavorites.
+
+  const handleFavorite = (singlePhone) => {
+    console.log(singlePhone);
+    // 5.4 call the localStorage addFavorites and pass the parameter singlePhone
+    addFavorites(singlePhone);
+  };
   return (
     <div>
       <div>
@@ -39,7 +49,11 @@ const PhoneDeatails = () => {
         <div className="space-x-4">
           {/* 4.2 to change the name of the button  dynamically pass the button name in label as props */}
           <Button label={<MdShoppingCartCheckout />}></Button>
-          <Button label={<MdOutlineBookmark />}></Button>
+          {/* 5.5 assign the onClick as props */}
+          <Button
+            onClick={() => handleFavorite(singlePhone)}
+            label={<MdOutlineBookmark />}
+          ></Button>
           {/* 4.7 use the bookmark and favorite icones from react icones and pass the component in the label */}
         </div>
       </div>
