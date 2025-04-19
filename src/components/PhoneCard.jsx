@@ -26,7 +26,6 @@ const PhoneCard = ({ phone }) => {
               ></span>
             </button>
           </Link>
-          {/* <button className="btn btn-primary">Buy Now</button> */}
         </div>
       </div>
     </div>

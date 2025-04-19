@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import Button from "../ui/Button";
 
 const PhoneDeatails = () => {
   // 3.2 useLoaderData to get all the data
@@ -33,7 +34,12 @@ const PhoneDeatails = () => {
       </div>
       <div className="flex justify-between">
         <h1 className="text-4xl font-thin">{name}</h1>
-        <button>Button</button>
+        {/* 4.1 creating a reusable button by making the button as component in src-> ui -> Button  */}
+        <div className="space-x-4">
+          {/* 4.2 to change the name of the button  dynamically pass the button name in label as props */}
+          <Button label="Cart"></Button>
+          <Button label="Favorites"></Button>
+        </div>
       </div>
     </div>
   );

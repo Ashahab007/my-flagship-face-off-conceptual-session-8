@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PhoneCard from "./PhoneCard";
+import Button from "../ui/Button";
 
 // 1.1 my requirement is showing not all the phone. but upon clicking the show all button it will show all the phones. the button name will be changed to show less. then upon clicking the show less it will show the less phones and button name will be changed to show all.
 const PhoneContainer = ({ phones }) => {
@@ -30,7 +31,7 @@ const PhoneContainer = ({ phones }) => {
           <PhoneCard phone={phone} key={phone.id}></PhoneCard>
         ))}
       </div>
-      {/* 1.8 added onClick and toggle with  showAll by setShowAll*/}
+      {/* 1.8 added onClick and toggle with showAll by setShowAll*/}
       <button
         onClick={() => {
           setShowAll(!showAll);
@@ -50,6 +51,15 @@ const PhoneContainer = ({ phones }) => {
           data-rounded="rounded-lg"
         ></span>
       </button>
+      {/* 4.5 also creating the showAll button using Button props. for this it has onClick action and dynamic label so pass the onClick whole function and label as props */}
+      <Button
+        onClick={() => {
+          setShowAll(!showAll);
+          //   2.0 (optional) it will help to scroll
+          if (showAll) window.scrollTo(0, 200);
+        }}
+        label={showAll ? "Show Less" : "Show All"}
+      ></Button>
     </div>
   );
 };
