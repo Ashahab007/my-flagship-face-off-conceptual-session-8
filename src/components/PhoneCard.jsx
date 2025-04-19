@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const PhoneCard = ({ phone }) => {
+const PhoneCard = ({ phone, deletable }) => {
   const { name, image, description, id } = phone;
   return (
     <div className="card bg-base-100 shadow-sm">
@@ -28,6 +28,13 @@ const PhoneCard = ({ phone }) => {
           </Link>
         </div>
       </div>
+      {/* 7.1 added delete button but as we worked in single Button component, so we don't want to show the delete icon not all the phone card. Only show it in favorite section card by sending a props deletable and show the delete button conditionally.*/}
+
+      {deletable && (
+        <button className="btn w-2 rounded-full p-4 text-xl absolute -top-4 -right-3">
+          X
+        </button>
+      )}
     </div>
   );
 };

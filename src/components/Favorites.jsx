@@ -19,7 +19,8 @@ const Favorites = () => {
     <div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
         {displayPhones.map((phone) => (
-          <PhoneCard phone={phone} key={phone.id}></PhoneCard>
+          // 7.2 set the props deletable true will show the delete button in favorite section card
+          <PhoneCard deletable={true} phone={phone} key={phone.id}></PhoneCard>
         ))}
       </div>
     </div>
