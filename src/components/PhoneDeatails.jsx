@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import Button from "../ui/Button";
+import { MdOutlineBookmark, MdShoppingCartCheckout } from "react-icons/md";
 
 const PhoneDeatails = () => {
   // 3.2 useLoaderData to get all the data
@@ -37,8 +38,9 @@ const PhoneDeatails = () => {
         {/* 4.1 creating a reusable button by making the button as component in src-> ui -> Button  */}
         <div className="space-x-4">
           {/* 4.2 to change the name of the button  dynamically pass the button name in label as props */}
-          <Button label="Cart"></Button>
-          <Button label="Favorites"></Button>
+          <Button label={<MdShoppingCartCheckout />}></Button>
+          <Button label={<MdOutlineBookmark />}></Button>
+          {/* 4.7 use the bookmark and favorite icones from react icones and pass the component in the label */}
         </div>
       </div>
     </div>
