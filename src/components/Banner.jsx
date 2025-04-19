@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import bannerImage from "../assets/banner.png";
 
-const Banner = () => {
+const Banner = ({ handleSearch }) => {
+  // 2.3 to get the data from a form take a useState hook
+  const [searchText, setSearchText] = useState("");
+
   return (
     <div className="max-w-7xl mx-auto">
       <img
@@ -12,8 +15,17 @@ const Banner = () => {
       <div className="text-center">
         <h1 className="text-5xl font-thin">Browse, Search, View, Buy</h1>
       </div>
-      <div className="flex justify-center items-center w-2/3 gap-2 mt-2 mx-auto">
+
+      {/* 2.6 set the handleSearch in form onSubmit and receive the e and searchText. here e is used only for preventDefault */}
+      <form
+        onSubmit={(e) => handleSearch(e, searchText)}
+        className="flex justify-center items-center w-2/3 gap-2 mt-2 mx-auto"
+      >
         <input
+          // 2.4 assign here the searchText in defaultValue
+          defaultValue={searchText}
+          // 2.5 assign setSearchText in onChange and get the input value
+          onChange={(e) => setSearchText(e.target.value)}
           className="border border-gray-300 shadow h-13 w-2/3 rounded focus:outline-0 px-3"
           type="text"
           name=""
@@ -32,7 +44,7 @@ const Banner = () => {
             data-rounded="rounded-lg"
           ></span>
         </button>
-      </div>
+      </form>
     </div>
   );
 };
