@@ -1,4 +1,4 @@
-const getFavoritesFromLs = () => {
+export const getFavoritesFromLs = () => {
   // 5.8 check the key "favorites" is present
   const getFavorites = localStorage.getItem("favorites");
   //   5.9 if present it will convert to object
@@ -20,7 +20,8 @@ export const addFavorites = (phone) => {
   //   5.12 but there is problem that same item is stored multiple times. but my requirement is item will be saved for onetime if second time added it will a show message. so we use find method because we need a single item
   const isExist = favorites.find((favorite) => favorite.id === phone.id);
   console.log(isExist);
-  if (isExist) return console.log("Items already added");
+  //   if (isExist) return console.log("Items already added");
+  if (isExist) return alert("Items already added");
   favorites.push(phone);
   //   5.7 convert the favorites to stringify
   localStorage.setItem("favorites", JSON.stringify(favorites));
