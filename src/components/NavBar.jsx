@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
+import { CartContext } from "../providers/Context";
 
 const NavBar = () => {
+  // 10.9 directly destructure the passed value cart and call the  useContext from react using CartContext as passed parameter. i.e যে context ব্যাবহার করবো সেই context তা useContext এ use করতে হবে।
+  const { cart } = useContext(CartContext);
+  console.log(cart);
+
+  console.log();
+
   const links = (
     <>
       <NavLink
@@ -65,7 +72,7 @@ const NavBar = () => {
           </div>
           <a className="text-xl font-extrabold">FlagShipFaceOff</a>
         </div>
-        <div className="navbar-center"></div>
+
         <div className="navbar-end space-x-4">
           <div className="flex list-none gap-4">{links}</div>
           <NavLink
@@ -76,7 +83,8 @@ const NavBar = () => {
           >
             <button className="btn btn-ghost hover:bg-gray-100 rounded-2xl ">
               <FaCartArrowDown size={20} />
-              {/* <p>Cart</p> */}
+              {/* 10.10 use the cart.length*/}
+              {cart.length}
             </button>
           </NavLink>
           <NavLink

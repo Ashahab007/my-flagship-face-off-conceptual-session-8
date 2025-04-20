@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
 import Button from "../ui/Button";
 import { MdOutlineBookmark, MdShoppingCartCheckout } from "react-icons/md";
 import { addFavorites } from "../../public/localStorage";
+import { CartContext } from "../providers/Context";
 
 const PhoneDeatails = () => {
+  // 10.11 as we update the the state of the cart so use setCart from CartContext where the update button is created.
+  const { setCart } = useContext(CartContext);
+
   // 3.2 useLoaderData to get all the data
   const data = useLoaderData();
   console.log(data);
@@ -48,7 +52,11 @@ const PhoneDeatails = () => {
         {/* 4.1 creating a reusable button by making the button as component in src-> ui -> Button  */}
         <div className="space-x-4">
           {/* 4.2 to change the name of the button  dynamically pass the button name in label as props */}
-          <Button label={<MdShoppingCartCheckout />}></Button>
+          {/* 10.12 create an onclick event. as the setCart is an array. so set the prev value with new value i.e singlePhone upon click*/}
+          <Button
+            onClick={() => setCart((prev) => [...prev, singlePhone])}
+            label={<MdShoppingCartCheckout />}
+          ></Button>
           {/* 5.5 assign the onClick as props */}
           <Button
             onClick={() => handleFavorite(singlePhone)}

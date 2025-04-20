@@ -1,4 +1,6 @@
-# React + Vite
+added add to cart and cart number increased upon clicked but after reload it will become 0. For this apply local storage. Which will be solved in Conceptual session Milestone 8 Part-9 after 26 minutes and before 7 minutes of part-10.
+
+<!-- # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -9,4 +11,4 @@ Currently, two official plugins are available:
 
 ## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project. -->
