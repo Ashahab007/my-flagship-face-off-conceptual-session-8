@@ -21,6 +21,7 @@ const Banner = ({ handleSearch }) => {
       <form
         onSubmit={(e) => {
           handleSearch(e, searchText);
+          e.preventDefault();
           // Reset the input field but not working
           setSearchText("");
         }}

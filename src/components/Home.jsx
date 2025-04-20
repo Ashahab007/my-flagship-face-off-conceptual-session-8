@@ -16,7 +16,6 @@ const Home = () => {
     // 2.11 if the search box is empty i.e nothing searched it will show all the phones
     if (text.length === 0) return setSearhPhones(data);
 
-    e.preventDefault();
     console.log(text);
 
     // 2.10 search the phones by name and brand

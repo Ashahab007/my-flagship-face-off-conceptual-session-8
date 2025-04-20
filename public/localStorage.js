@@ -27,3 +27,14 @@ export const addFavorites = (phone) => {
   localStorage.setItem("favorites", JSON.stringify(favorites));
   //   Note: But problem is when we add another phone it replace the previous one for this we have to save the both phone take getFavoritesFromLs function. which will save previous phones.
 };
+
+// 8.1 removing phone from localStorage
+// 8.4 receive the id
+export const removePhoneFromLs = (id) => {
+  const favorites = getFavoritesFromLs();
+  console.log(id);
+  const remainingPhones = favorites.filter((phone) => phone.id !== id);
+  console.log(remainingPhones);
+
+  localStorage.setItem("favorites", JSON.stringify(remainingPhones));
+};
