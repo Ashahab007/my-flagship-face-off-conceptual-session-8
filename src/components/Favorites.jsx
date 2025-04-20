@@ -4,6 +4,7 @@ import {
   getFavoritesFromLs,
   removePhoneFromLs,
 } from "../../public/localStorage";
+import EmptyPage from "../pages/EmptyPage";
 
 // 6.1 showing the Favorites to favorite section
 const Favorites = () => {
@@ -19,13 +20,18 @@ const Favorites = () => {
     setDisplayPhones(getPhonesFromLs);
   }, []);
 
-  // 8.2 add a handleRemove to get the id. remember handleDelete will be applied where useEffect is used. because if we used handleDelete in PhoneCard it will not delete from the Favorites. If refresh the page then works because it's not re-render. To re-render it  apply handleDelete where useEffect is applied, it will re-render. Pass the handleDelete as props to PhoneCard as props to get the id
+  // 8.2 add a handleRemove to get the id. remember handleDelete will be applied where useEffect is used. because if we used handleDelete in PhoneCard it will not delete from the Favorites. If refresh the page then works because it's not re-render. To re-render it  apply handleDelete where useEffect is applied, it will re-render. Pass the handleDelete as props to PhoneCard to get the id.
   const handleDelete = (id) => {
     removePhoneFromLs(id);
 
     // 8.3 set for rerender
     setDisplayPhones(getFavoritesFromLs());
   };
+
+  // 9.1 if the cart is empty show no products in favorite
+  if (displayPhones.length < 1) {
+    return <EmptyPage />;
+  }
   return (
     <div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
